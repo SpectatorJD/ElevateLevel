@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class EmployeeBook {
-    private static Employee[] employees;
+    private  Employee[] employees;
 
     private int realSize;
     //private static int counter = 0;
@@ -106,7 +106,7 @@ public class EmployeeBook {
         }
     }
 
-    public static void calculateAverageSalary (String department) {
+    public  void calculateAverageSalary (String department) {
         int departmentBudget = 0;
         int employeeCount = 0;
         for (Employee employee: employees){
@@ -119,7 +119,7 @@ public class EmployeeBook {
         System.out.println("Средняя зарплата по отделу составляет " + departmentBudget/employeeCount);
 
     }
-    public  static void calculateIndexSalaryWithDepartment (double index){
+    public   void calculateIndexSalaryWithDepartment (double index){
         double needIndex = index/100;
         for (Employee employee: employees){
             if (employee != null){
