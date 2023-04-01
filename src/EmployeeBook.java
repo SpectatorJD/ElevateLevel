@@ -83,7 +83,7 @@ public class EmployeeBook {
         double avarage = 0;
         for (int i = 0; i < realSize; i++) {
 
-            avarage += employees[i].getSalary() / employees.length;
+            avarage += employees[i].getSalary() / realSize;
         }
         System.out.println("Средняя зарплата составляет " + avarage + " рублей");
     }
