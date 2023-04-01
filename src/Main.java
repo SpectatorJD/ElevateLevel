@@ -19,7 +19,9 @@ public class Main {
         employeeBook.printAverageSalary();
         employeeBook.printAllFIO();
         employeeBook.printIndexSalary();
-        //employeeBook.printMinSalaryInDepartment("5");
+        employeeBook.calculateAverageSalary("5");
+        employeeBook.calculateIndexSalaryWithDepartment(50);
+
 
 
     }

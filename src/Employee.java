@@ -5,10 +5,12 @@ public class  Employee {
     private String department;
 
 
+
     public  Employee(String FIO, String department, int salary) {
         this.FIO = FIO;
         this.department = department;
         this.salary = salary;
+
     }
 
     public String getFIO() {
