@@ -9,17 +9,19 @@ public class EmployeeBook {
 
     public EmployeeBook() {
         this.employees = new Employee[10];
+        this.counter = counter++;
 
     }
 
 
     public void addEmployee(String employeesFIO, String department, int salary) {
+        this.counter = counter++;
         if (id >= employees.length) {
-            System.out.println("Нельзя добавить cотрудника, закончилось место");
+            System.out.println("Нельзя добавить сотрудника, закончилось место");
         }
         Employee newEmployee = new Employee(employeesFIO, department, salary);
         employees[id++] = newEmployee;
-        this.counter = counter++;
+
     }
 
     public void printAllSalary() {
@@ -29,7 +31,7 @@ public class EmployeeBook {
         for (int i = 0; i < id; i++)
             sum += employees[i].getSalary();
         System.out.println("Сумма затрат на зарплаты в месяц " + sum + " рублей");
-
+        this.counter = counter++;
     }
 
 
@@ -42,6 +44,7 @@ public class EmployeeBook {
             }
         }
         System.out.println(employeeFIO + " не найден");
+        this.counter = counter++;
     }
 
     public void printAllEmployee() {
@@ -49,6 +52,7 @@ public class EmployeeBook {
             Employee employee = employees[i];
             System.out.println(employee.getFIO() + " " + "отдел : " + employee.getDepartment() + " " + "Зарплата " + employee.getSalary());
         }
+        this.counter = counter++;
     }
 
 
@@ -124,8 +128,35 @@ public class EmployeeBook {
                 System.out.println("новая зп на +50 % " + salaryNew);
             }
         }
-
-        
+    }
+    public void printAllEmployeeWithDep(String department) {
+        for (Employee employee : employees) {
+            if (employee != null) {
+                if (department == employee.getDepartment()) {
+                    System.out.println(employee.getFIO() + " " + "Зарплата " + employee.getSalary());
+                }
+            }
+        }
+    }
+    public void printEmployeeMinSalary(int reference){
+        for (Employee employee: employees){
+          if (employee != null) {
+              if (reference> employee.getSalary()){
+                  System.out.println("У сотрудника " + employee.getFIO() + "из отдела " + employee.getDepartment()+ " зарплата "
+                          + employee.getSalary() +  " и она меньеше чем указанное значение" );
+              }
+          }
+        }
+    }
+    public void printEmployeeMaxSalary(int reference){
+        for (Employee employee: employees){
+            if (employee != null) {
+                if (reference<= employee.getSalary()){
+                    System.out.println("У сотрудника " + employee.getFIO() + "из отдела " + employee.getDepartment()+ " зарплата "
+                            + employee.getSalary() +  " и она больше или равна чем указанное значение" );
+                }
+            }
+        }
     }
 
 

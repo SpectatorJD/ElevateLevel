@@ -21,6 +21,9 @@ public class Main {
         employeeBook.printIndexSalary();
         employeeBook.calculateAverageSalary("5");
         employeeBook.calculateIndexSalaryWithDepartment(50);
+        employeeBook.printAllEmployeeWithDep("4");
+        employeeBook.printEmployeeMinSalary(11000);
+        employeeBook.printEmployeeMaxSalary(30000);
 
 
 
