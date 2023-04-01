@@ -4,23 +4,23 @@ import java.util.Objects;
 public class EmployeeBook {
     private static Employee[] employees;
 
-    private int id;
-    private static int counter = 0;
+    private int realSize;
+    //private static int counter = 0;
 
     public EmployeeBook() {
         this.employees = new Employee[10];
-        this.counter = counter++;
+        //this.counter = counter++;
 
     }
 
 
     public void addEmployee(String employeesFIO, String department, int salary) {
-        this.counter = counter++;
-        if (id >= employees.length) {
+        //this.counter = counter++;
+        if (realSize >= employees.length) {
             System.out.println("Нельзя добавить сотрудника, закончилось место");
         }
         Employee newEmployee = new Employee(employeesFIO, department, salary);
-        employees[id++] = newEmployee;
+        employees[realSize++] = newEmployee;
 
     }
 
@@ -28,15 +28,15 @@ public class EmployeeBook {
         int sum = 0;
 
 
-        for (int i = 0; i < id; i++)
+        for (int i = 0; i < realSize; i++)
             sum += employees[i].getSalary();
         System.out.println("Сумма затрат на зарплаты в месяц " + sum + " рублей");
-        this.counter = counter++;
+        //this.counter = counter++;
     }
 
 
     public void findEmployee(String employeeFIO) {
-        for (int i = 0; i < id; i++) {
+        for (int i = 0; i < realSize; i++) {
             Employee employee = employees[i];
             if (employee.getFIO().equals(employeeFIO)) {
                 System.out.println(employee.getFIO() + employee.getDepartment() + employee.getSalary());
@@ -44,22 +44,22 @@ public class EmployeeBook {
             }
         }
         System.out.println(employeeFIO + " не найден");
-        this.counter = counter++;
+        //this.counter = counter++;
     }
 
     public void printAllEmployee() {
-        for (int i = 0; i < id; i++) {
+        for (int i = 0; i < realSize; i++) {
             Employee employee = employees[i];
             System.out.println(employee.getFIO() + " " + "отдел : " + employee.getDepartment() + " " + "Зарплата " + employee.getSalary());
         }
-        this.counter = counter++;
+        //this.counter = counter++;
     }
 
 
     public void printMinSalary() {
         int min = employees[0].getSalary();
 
-        for (int i = 0; i < id; i++) {
+        for (int i = 0; i < realSize; i++) {
             if (employees[i].getSalary() < min) {
                 min = employees[i].getSalary();
             }
@@ -71,7 +71,7 @@ public class EmployeeBook {
     public void printMaxSalary() {
         int max = employees[0].getSalary();
 
-        for (int i = 0; i < id; i++) {
+        for (int i = 0; i < realSize; i++) {
             if (employees[i].getSalary() > max) {
                 max = employees[i].getSalary();
             }
@@ -81,7 +81,7 @@ public class EmployeeBook {
 
     public void printAverageSalary() {
         double avarage = 0;
-        for (int i = 0; i < id; i++) {
+        for (int i = 0; i < realSize; i++) {
 
             avarage += employees[i].getSalary() / employees.length;
         }
@@ -89,7 +89,7 @@ public class EmployeeBook {
     }
 
     public void printAllFIO() {
-        for (int i = 0; i < id; i++) {
+        for (int i = 0; i < realSize; i++) {
             Employee employee = employees[i];
             System.out.println(i + "." + " ФИО сотрудника " + employee.getFIO());
         }
@@ -98,7 +98,7 @@ public class EmployeeBook {
     public void printIndexSalary() {
         double index = 0.15;
 
-        for (int i = 0; i < id; i++) {
+        for (int i = 0; i < realSize; i++) {
             int indexSalary = employees[i].getSalary();
             Employee employee = employees[i];
             indexSalary += employees[i].getSalary() * index;
@@ -125,7 +125,7 @@ public class EmployeeBook {
             if (employee != null){
                 double salaryNew = employee.getSalary();
                 salaryNew += employee.getSalary() * needIndex;
-                System.out.println("новая зп на +50 % " + salaryNew);
+                System.out.println("Новая зарплата, увеличеная на 50 % " + salaryNew);
             }
         }
     }
@@ -168,12 +168,12 @@ public class EmployeeBook {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         EmployeeBook that = (EmployeeBook) o;
-        return id == that.id && Arrays.equals(employees, that.employees);
+        return realSize == that.realSize && Arrays.equals(employees, that.employees);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(id);
+        int result = Objects.hash(realSize);
         result = 31 * result + Arrays.hashCode(employees);
         return result;
     }
@@ -182,7 +182,7 @@ public class EmployeeBook {
     public String toString() {
         return "EmployeeBook{" +
                 "employees=" + Arrays.toString(employees) +
-                ", id=" + id +
+                ", id=" + realSize +
                 '}';
     }
 }
